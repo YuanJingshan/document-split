@@ -1,0 +1,60 @@
+#配置
+spring:
+  #mysql
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_db
+    username: root
+    password: 123456
+    driver-class: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 初始化大小，最小，最大
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    #配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+     # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    #打开PSCache，并且指定每个连接PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    #配置监控统计拦截的filters，去掉后监控界面sql将无法统计,'wall'用于防火墙
+    filters: stat, wall, log4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+  #jpa
+  #jpa
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+#        dialect: org.hibernate.dialect.MySQL5Dialect
+#        generate_statistics: true #打开统计信息
+        cache:
+          use_second_level_cache: true #打开二级缓存
+          use_query_cache: true #打开查询缓存
+          region:
+            factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+  security:
+    user:
+      name: admin
+      password: admin
+#    basic:
+#      enabled: false
+#log
+logging:
+  pattern:
+    console: "%d - %p - %t %c- %m%n"
+  file: logs/log.txt
+  level.com.xiaoi.document.split: debug
+

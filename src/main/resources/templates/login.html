@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>springboot-demo</title>
+    <link rel="Shortcut Icon" href="/img/logo_m.png" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{plugins/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body class="login">
+<div class="layui-layout">
+    <!-- 主体 -->
+    <div class="layui-body">
+        <div class="layui-row" style="margin-top: 5%;margin-bottom: 5%;">
+            <div class="layui-col-md7"
+                 style="border-bottom: 2px solid white;margin-right: 2%;letter-spacing:2px;float: right;">
+                <div class="project_name">
+                    <img src="/img/logo_l.png"/>
+                    <strong>QA对知识拆分管理系统</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row">
+            <div class="layui-col-md3 layui-col-md-offset8">
+                <div class="layui-input-block"
+                     style="text-align: center;line-height: 38px;background-color: #f79647;margin-bottom:5px;font-weight: 800;color: white;letter-spacing:5px;border-radius:5px">
+                    用户登录
+                </div>
+
+                <form class="layui-form" th:action="@{/login}" action="/login" method="POST"
+                      style="background-color: white;padding: 10px 10px;border-radius:5px">
+                    <div class="layui-form-item" style="margin-top: 10px;background-color: white;">
+                        <div class="layui-input-block">
+                            <input type="text" id="username" name="username" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input type="password" id="password" name="password" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div id="login_div" class="layui-form-item">
+                        <div class="layui-input-block">
+                            <p th:if="${param.logout}" class="bg-warning">已成功注销</p>
+                            <p th:if="${param.error}" class="bg-danger">有错误，请重试</p>
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">登录</button>
+                        </div>
+                        <!--<input type="button" id="login_btn" class="layui-btn layui-btn-primary layui-col-xs-offset9"-->
+                        <!--style="padding: 0 23px;border: 1px solid #4476A7;color: #B2B2B2;border-radius:10px"-->
+                        <!--value="登录">-->
+                        <!--</input>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <p>
+            © 贵州小爱机器人科技有限公司
+        </p>
+    </div>
+</div>
+
+<script th:src="@{plugins/layui/layui.js}"></script>
+<script>
+    layui.use('form', function () {
+        var form = layui.form;
+
+//        //监听提交
+//        form.on('submit(formDemo)', function (data) {
+//            layer.msg(JSON.stringify(data.field));
+//            return false;
+//        });
+    });
+</script>
+</body>
+</html>

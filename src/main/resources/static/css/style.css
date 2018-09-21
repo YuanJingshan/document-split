@@ -1,0 +1,51 @@
+.layui-body {
+    left: 0;
+}
+
+.layui-layout-admin .layui-footer {
+    left: 0;
+    text-align: center;
+}
+
+.layui-layout-admin .layui-logo {
+    width: 400px;
+    padding-left: 15px;
+    font-size: 26px;
+    text-align: left;
+    color: #7861ad;
+}
+
+.layui-layout-left {
+    left: 400px;
+}
+
+.layui-layout-admin .layui-header {
+    background-color: #4bacc6;
+}
+
+.login {
+    background-color: #B2B2B2;
+    background: url(../img/bg.jpg) center top no-repeat;
+    background-size: cover;
+}
+
+.login .layui-body .layui-input-block {
+    margin-left: 0px;
+    min-height: 36px;
+}
+
+.login .layui-footer {
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 15px;
+    text-align: center;
+}
+
+.login .project_name strong {
+    font-size: 30px;
+}

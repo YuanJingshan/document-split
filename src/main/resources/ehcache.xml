@@ -1,0 +1,29 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+    <!-- cache path -->
+    <diskStore path="D:\cache"/>
+
+    <!-- cacheManager event listener -->
+    <cacheManagerEventListenerFactory class="com.xiaoi.document.split.platform.cache.EhcacheCacheManagerEventListenerFactory" properties=""/>
+
+    <!-- default cache -->
+    <defaultCache maxEntriesLocalHeap="0" eternal="false" timeToIdleSeconds="1200" timeToLiveSeconds="1200">
+        <!-- <terracotta/> -->
+    </defaultCache>
+
+    <!-- entity cache -->
+    <cache name="entityCache"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="10"
+           timeToLiveSeconds="20"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap"/>
+        <cacheEventListenerFactory class="com.xiaoi.document.split.platform.cache.EhcacheCacheEventListenerFactory" />
+    </cache>
+
+</ehcache>
